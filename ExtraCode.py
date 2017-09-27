@@ -140,3 +140,38 @@ def dfsRecV2(self, start, visited=None):
             self.dfsRecV2(curNode, visited)
     return visited
 
+    def assignNcolor(self, u):
+        for x in self.colors:
+            print(x, list(self.nbColor(u)))
+            if x not in self.nbColor(u):
+                # print("Node:", u, "will be assigned: ", x)
+                return x
+
+    def iter_dfs(G, s):
+        S, Q = set(), []
+        Q.append(s)
+        while Q:
+            u = Q.pop()
+            if u in S:
+                continue
+            S.add(u)
+            Q.extend(G[u])
+            yield u
+
+
+    def iterDfs(self, s):
+        S = set()
+        Q = []
+        Q.append(s)
+        while Q:
+            u = Q.pop()
+            # print("u = ", u)
+            # print("Q = ", Q)
+            # print("S = ", S)
+            if u in S:
+                continue
+            # if self.countries[u][0].color =
+            S.add(u)
+            Q.extend(self.countries[u][0].neighbors)
+            self.countries[u][0].color = 1
+            yield u
